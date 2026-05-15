@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flex Lexical Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="dot"></div>
+            <h2>Flex Analyzer</h2>
+        </div>
+
+        <nav>
+            <button class="nav-btn active" onclick="showTab('editor')">Editor</button>
+            <button class="nav-btn" onclick="showTab('tokens')">Tokens</button>
+            <button class="nav-btn" onclick="showTab('logs')">Logs</button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>Lexical Analyzer Tool</p>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <header class="header">
+            <h1>Flex Lexical Analyzer</h1>
+            <p>Token analysis system using Flex + Flask and using Docker</p>
+        </header>
+
+        <section class="grid">
+
+            <!-- EDITOR -->
+            <div class="card editor-card">
+                <div class="card-header">
+                    <span>Source Code</span>
+
+                    <div class="actions">
+                        <button onclick="clearCode()">Clear</button>
+                        <button onclick="uploadFile()">Upload</button>
+                        <button class="primary" onclick="analyzeCode()">Analyze</button>
+                    </div>
+                </div>
+
+                <textarea id="code" placeholder="Type or paste code here..."></textarea>
+
+                <input type="file" id="fileInput" hidden onchange="handleFile(event)">
+            </div>
+
+            <!-- OUTPUT -->
+            <div class="card output-card">
+                <div class="card-header">
+                    <span>Tokens Output</span>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="output"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- LOG PANEL -->
+            <div class="card logs-card" style="display:none;">
+                <div class="card-header">
+                    <span>Logs</span>
+                </div>
+
+                <div class="logs" id="logs">
+                    <p>No logs yet.</p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

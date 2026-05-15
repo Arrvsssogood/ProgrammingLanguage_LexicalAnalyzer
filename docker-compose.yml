@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  lexical-analyzer:
+    build: .
+    ports:
+      - "5000:5000"
